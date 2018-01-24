@@ -1,0 +1,41 @@
+{
+  "author": "Andrew Abramov <andrewblond@yandex.com>",
+  "name": "enb-magic-factory",
+  "version": "0.5.0",
+  "description": "ENB factory of helpers to create nodes and targets in runtime",
+  "repository": "git://github.com/enb/enb-magic-factory",
+  "homepage": "https://github.com/enb/enb-magic-factory",
+  "bugs": "https://github.com/enb/enb-magic-factory/issues",
+  "licenses": [
+    {
+      "type": "MPL-2.0",
+      "url": "https://github.com/enb/enb-magic-factory/blob/master/LICENSE.txt"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "peerDependencies": {
+    "enb": ">= 0.13.0 < 2.0.0"
+  },
+  "dependencies": {
+    "vow": "0.4.11",
+    "minimist": "1.2.0"
+  },
+  "devDependencies": {
+    "enb": ">= 0.13.0 < 2.0.0",
+    "istanbul": "0.3.22",
+    "jscs": "1.10.0",
+    "jshint": "2.8.0",
+    "mocha": "2.3.3",
+    "must": "0.13.1"
+  },
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "npm run lint && npm run unit && npm run cover",
+    "lint": "jshint . && jscs -c .jscs.js .",
+    "unit": "mocha test/**/*.test.js",
+    "cover": "istanbul cover _mocha -- ./test/**/*.test.js",
+    "example": "enb -d examples/silly make clean && enb -d examples/silly make __magic__"
+  }
+}
