@@ -1,0 +1,25 @@
+{
+  "name": "enb-mono",
+  "version": "0.0.0",
+  "description": "ENB packages monorepo",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "node -c packages/*/{*,{lib,techs,spec,test}/**}.js",
+    "test": "lerna run test",
+    "posttest": "eslint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "qqq"
+  },
+  "devDependencies": {
+    "eslint": "^4.13.1",
+    "eslint-config-pedant": "^1.0.0",
+    "mocha": "^4.0.1",
+    "mock-fs": "^4.4.1",
+    "must": "^0.13.4",
+    "nyc": "^11.3.0"
+  },
+  "author": "Alexey Yaroshevich <zxqfox@gmail.com>",
+  "license": "MPL-2.0"
+}

@@ -3,7 +3,6 @@ sudo: false
 branches:
   only:
     - master
-    - 3.x
     - /^greenkeeper/.*$/
 
 language: node_js
@@ -15,5 +14,13 @@ matrix:
     - node_js: "8"
       env: COVERALLS=1
 
+before_install:
+  - npm i -g lerna
+
+install:
+  - lerna bootstrap
+
 after_success:
-  - if [ "x$COVERALLS" = "x1" ]; then npm run coveralls; fi
+  - if [ "x$COVERALLS" = "x1" ]; then
+      nyc report --reporter=text-lcov | npx coveralls;
+    fi
