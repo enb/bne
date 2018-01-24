@@ -1,0 +1,44 @@
+{
+  "author": "Andrew Abramov <andrewblond@yandex.com>",
+  "description": "Pseudo BEM levels for ENB",
+  "name": "enb-bem-pseudo-levels",
+  "version": "0.4.0",
+  "repository": "git://github.com/enb/enb-bem-pseudo-levels",
+  "homepage": "https://github.com/enb/enb-bem-pseudo-levels",
+  "bugs": "https://github.com/enb/enb-bem-pseudo-levels/issues",
+  "licenses": [
+    {
+      "type": "MPL-2.0",
+      "url": "https://github.com/enb/enb-bem-pseudo-levels/blob/master/LICENSE.txt"
+    }
+  ],
+  "contributors": [
+    {
+      "name": "Andrew Abramov",
+      "email": "andrewblond@yandex.com"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "peerDependencies": {
+    "enb": ">= 0.15.0 < 2.0.0"
+  },
+  "dependencies": {
+    "vow": "0.4.11",
+    "enb-bem-techs": "2.1.0"
+  },
+  "devDependencies": {
+    "enb": ">= 0.15.0 < 2.0.0",
+    "jshint": "2.5.11",
+    "jscs": "1.8.1",
+    "bem-naming": "0.4.0"
+  },
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "npm run lint",
+    "lint": "jshint . && jscs -c .jscs.js .",
+    "build": "cd examples/copy-level && enb make pseudo && cd ../filter-level && enb make pseudo && cd ../merge-level && enb make pseudo",
+    "clean": "rm -rf examples/*/*pseudo-level.blocks && rm -rf examples/*/.enb/tmp"
+  }
+}
