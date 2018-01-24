@@ -1,0 +1,5 @@
+lib/assets
+node_modules
+examples
+tmpl-specs-reports
+coverage

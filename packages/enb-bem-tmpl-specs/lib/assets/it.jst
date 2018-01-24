@@ -1,0 +1,66 @@
+<%
+// prepares
+var titleSuffix = lang ? ' in `' + lang + '` lang' : '';
+var subreference = lang ? '[\'' + lang + '\']' : '';
+%>
+
+it('should be equal `${ it }` by ${ engine.name }${ titleSuffix }', function () {
+    ${ before }
+
+    var ref = references['${ it }']${ subreference },
+        _this = this,
+        <% if (engine.name === 'bemtree') { %>
+            source = ref.data,
+            expected = ref.bemjson;
+        <% } else { %>
+            source = ref.bemjson,
+            expected = ref.html;
+        <% } %>
+
+    <% if (saveHtml || saveReferenceHtml || autoAddReference) { %>
+        var filenames = [];
+    <% } %>
+
+    <% if (saveReferenceHtml) {%>
+        filenames.push(path.join(ref.dir, '${ referenceHtmlFilename }'));
+    <% } %>
+
+    <% if (saveHtml) {%>
+        filenames.push(path.join(__dirname, '${ htmlFilename }'));
+    <% } %>
+
+    return new vow.Promise(function(resolve, reject) {
+        <% if (engine.async) { %>
+            engine.apply(source, function(errs, actual) {
+                if (errs !== null) {
+                    reject(errs);
+                    return;
+                }
+
+                resolve(actual);
+            });
+        <% } else { %>
+            resolve(engine.apply(source));
+        <% } %>
+    }).then(function(actual) {
+        if (!actual) {
+            _this.skip();
+            return;
+        }
+        <% if (autoAddReference) {%>
+            if (!expected) {
+                filenames.push(path.join(ref.dir) + '/${ it }.${ engine.name === 'bemtree' ? 'bemjson.js' : 'html' }');
+            }
+        <% } %>
+
+
+        <% if (saveHtml || saveReferenceHtml || autoAddReference) { %>
+            return saveToFile(filenames, actual).always(function() {
+                return assertResult(actual, expected);
+            });
+        <% } else { %>
+            return assertResult(actual, expected);
+        <% } %>
+    });
+
+});
