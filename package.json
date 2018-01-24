@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "qqq"
+    "url": "https://github.com/enb/bne.git"
   },
   "devDependencies": {
     "eslint": "^4.13.1",
