@@ -13,12 +13,7 @@
     "files"
   ],
   "author": "Andrew Abramov <mail@blond.im>",
-  "licenses": [
-    {
-      "type": "MPL-2.0",
-      "url": "https://github.com/enb/enb-bem-techs/blob/master/LICENSE.txt"
-    }
-  ],
+  "license": "MPL-2.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:enb/enb-bem-techs.git"
@@ -40,7 +35,7 @@
     "node": ">= 4"
   },
   "peerDependencies": {
-    "enb": ">=0.15.0 <2.0.0"
+    "enb": ">= 1.3.0 < 2.0.0"
   },
   "dependencies": {
     "@bem/sdk.bemjson-to-decl": "0.2.6",
@@ -59,7 +54,7 @@
     "vow": "0.4.17"
   },
   "devDependencies": {
-    "enb": ">=0.15.0 <2.0.0",
+    "enb": ">= 1.3.0 < 2.0.0",
     "mock-enb": "^0.3.6"
   },
   "main": "index.js",

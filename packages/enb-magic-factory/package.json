@@ -6,35 +6,25 @@
   "repository": "git://github.com/enb/enb-magic-factory",
   "homepage": "https://github.com/enb/enb-magic-factory",
   "bugs": "https://github.com/enb/enb-magic-factory/issues",
-  "licenses": [
-    {
-      "type": "MPL-2.0",
-      "url": "https://github.com/enb/enb-magic-factory/blob/master/LICENSE.txt"
-    }
-  ],
+  "license": "MPL-2.0",
   "engines": {
-    "node": ">= 0.10.0"
+    "node": ">= 0.4"
   },
   "peerDependencies": {
-    "enb": ">= 0.13.0 < 2.0.0"
+    "enb": ">= 1.3.0 < 2.0.0"
   },
   "dependencies": {
-    "vow": "0.4.11",
+    "vow": "0.4.17",
     "minimist": "1.2.0"
   },
   "devDependencies": {
-    "enb": ">= 0.13.0 < 2.0.0",
-    "istanbul": "0.3.22",
-    "jscs": "1.10.0",
-    "jshint": "2.8.0",
-    "mocha": "2.3.3",
-    "must": "0.13.1"
+    "enb": ">= 1.3.0 < 2.0.0"
   },
   "main": "lib/index.js",
   "scripts": {
     "test": "npm run lint && npm run unit && npm run cover",
     "lint": "jshint . && jscs -c .jscs.js .",
-    "unit": "mocha test/**/*.test.js",
+    "unit": "nyc mocha test/**/*.test.js",
     "cover": "istanbul cover _mocha -- ./test/**/*.test.js",
     "example": "enb -d examples/silly make clean && enb -d examples/silly make __magic__"
   }
