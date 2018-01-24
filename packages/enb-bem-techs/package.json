@@ -1,0 +1,87 @@
+{
+  "name": "enb-bem-techs",
+  "version": "3.0.0-0",
+  "description": "BEM methodology for ENB",
+  "keywords": [
+    "enb",
+    "bem",
+    "techs",
+    "levels",
+    "bemjson",
+    "bemdecl",
+    "deps",
+    "files"
+  ],
+  "author": "Andrew Abramov <mail@blond.im>",
+  "licenses": [
+    {
+      "type": "MPL-2.0",
+      "url": "https://github.com/enb/enb-bem-techs/blob/master/LICENSE.txt"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:enb/enb-bem-techs.git"
+  },
+  "homepage": "https://github.com/enb/enb-bem-techs",
+  "bugs": "https://github.com/enb/enb-bem-techs/issues",
+  "maintainers": [
+    {
+      "name": "Andrew Abramov",
+      "email": "mail@blond.im",
+      "github-username": "blond"
+    }
+  ],
+  "contributors": [
+    "Andrew Abramov <mail@blond.im>",
+    "Marat Dulin <mdevils@yandex.ru>"
+  ],
+  "engines": {
+    "node": ">= 4"
+  },
+  "peerDependencies": {
+    "enb": ">=0.15.0 <2.0.0"
+  },
+  "dependencies": {
+    "@bem/sdk.bemjson-to-decl": "0.2.6",
+    "@bem/sdk.cell": "0.2.4",
+    "@bem/sdk.decl": "0.3.1",
+    "@bem/sdk.deps": "0.2.6",
+    "@bem/sdk.naming.entity.parse": "0.2.4",
+    "@bem/sdk.naming.entity.stringify": "1.0.1",
+    "@bem/sdk.naming.presets": "0.0.7",
+    "@bem/sdk.walk": "0.2.5",
+    "file-eval": "2.0.0",
+    "inherit": "2.2.6",
+    "lodash.omit": "4.5.0",
+    "lodash.uniqby": "4.7.0",
+    "node-eval": "2.0.0",
+    "vow": "0.4.17"
+  },
+  "devDependencies": {
+    "enb": ">=0.15.0 <2.0.0",
+    "eslint": "^4.13.1",
+    "eslint-config-pedant": "^1.0.0",
+    "mocha": "^4.0.1",
+    "mock-enb": "^0.3.6",
+    "mock-fs": "^4.4.1",
+    "must": "^0.13.4",
+    "nyc": "^11.3.0"
+  },
+  "main": "index.js",
+  "files": [
+    "lib/**",
+    "techs/**",
+    "index.js",
+    "LICENSE.txt"
+  ],
+  "scripts": {
+    "test": "npm run lint && npm run unit",
+    "lint": "eslint .",
+    "unit": "mocha -R spec test/techs",
+    "bench": "npm run bench-deps && matcha benchmark/*.js",
+    "bench-deps": "cd benchmark/fixtures && bower i",
+    "cover": "nyc npm run unit",
+    "coveralls": "npm i coveralls && npm run cover && nyc report --reporter=text-lcov | coveralls"
+  }
+}
